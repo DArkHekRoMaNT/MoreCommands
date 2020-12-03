@@ -12,26 +12,26 @@ namespace MoreCommands
             base.StartServerSide(api);
             this.api = api;
 
-            api.RegisterCommand("me", "Send message as player action", "/me <msg>", MeCommand);
-            api.RegisterCommand("tell", "Send private message to other player", "/tell <player> <msg>", TellCommand);
+            api.RegisterCommand("me", "Send message as player action", "/me msg", MeCommand);
+            api.RegisterCommand("tell", "Send private message to other player", "/tell player msg", TellCommand);
         }
         public void MeCommand(IServerPlayer player, int groupId, CmdArgs args)
         {
             if (args == null || args.Length < 1)
             {
-                api.SendMessage(player, GlobalConstants.CurrentChatGroup, Lang.Get("Syntax: /me <player> <msg> or /tell <player> <msg>"), EnumChatType.OwnMessage);
+                api.SendMessage(player, GlobalConstants.CurrentChatGroup, Lang.Get("Syntax: /me msg"), EnumChatType.OwnMessage);
                 return;
             }
 
             string msg = "";
-            for (int i = 1; i < args.Length; i++) msg += args[i];
+            for (int i = 0; i < args.Length; i++) msg += args[i];
             api.SendMessage(player, GlobalConstants.GeneralChatGroup, msg, EnumChatType.OthersMessage);
         }
         public void TellCommand(IServerPlayer sender, int groupId, CmdArgs args)
         {
             if (args == null || args.Length < 1)
             {
-                api.SendMessage(sender, GlobalConstants.CurrentChatGroup, Lang.Get("Syntax: /me <player> <msg> or /tell <player> <msg>"), EnumChatType.OwnMessage);
+                api.SendMessage(sender, GlobalConstants.CurrentChatGroup, Lang.Get("Syntax: /tell player msg"), EnumChatType.OwnMessage);
                 return;
             }
 
