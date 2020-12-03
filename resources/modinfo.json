@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "morecommands",
+  "name": "More Commands",
+  "author": "DArkHekRoMaNT",
+  "version": "1.0.0",
+  "dependency": {
+    "game": "1.13.4"
+  },
+  "website": "https://github.com/darkhekromant/MoreCommands",
+  "side": "Server"
+}
