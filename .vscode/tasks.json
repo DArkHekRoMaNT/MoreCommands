@@ -13,7 +13,7 @@
       "label": "pack-release",
       "dependsOn": "pack",
       "type": "shell",
-      "command": "git archive -o releases/${workspaceFolderBasename}_v${config:vsversion}_last.zip \"HEAD:resources\"",
+      "command": "mkdir -p releases; git archive -o releases/${workspaceFolderBasename}_v${config:vsversion}_last.zip \"HEAD:resources\"",
       "presentation": {
         "reveal": "silent"
       },
