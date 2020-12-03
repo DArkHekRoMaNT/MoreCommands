@@ -4,16 +4,29 @@
     {
       "label": "pack",
       "type": "shell",
-      "command": "mkdir -p mods; rm -r mods/${workspaceFolderBasename}; mkdir mods/${workspaceFolderBasename}; cp -r resources/* mods/${workspaceFolderBasename}",
+      "command": [
+        "mkdir -p mods;",
+        "rm -r mods/${workspaceFolderBasename};",
+        "mkdir mods/${workspaceFolderBasename};",
+        "cp -r resources/* mods/${workspaceFolderBasename}"
+      ],
       "presentation": {
         "reveal": "silent"
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "pack-release",
-      "dependsOn": "pack",
+      "dependsOn": "build (Debug)",
       "type": "shell",
-      "command": "mkdir -p releases; git archive -o releases/${workspaceFolderBasename}_v${config:vsversion}_last.zip \"HEAD:resources\"",
+      "command": [
+        "mkdir -p releases;",
+        "git archive",
+        "-o releases/${workspaceFolderBasename}_v${config:vsversion}_last.zip",
+        "--add-file=mods/${workspaceFolderBasename}/${workspaceFolderBasename}.dll",
+        "--add-file=mods/${workspaceFolderBasename}/${workspaceFolderBasename}.pdb",
+        "\"HEAD:resources\""
+      ],
       "presentation": {
         "reveal": "silent"
       },
