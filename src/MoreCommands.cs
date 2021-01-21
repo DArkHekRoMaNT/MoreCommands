@@ -32,7 +32,7 @@ namespace MoreCommands
             }
 
             string msg = "";
-            for (int i = 0; i < args.Length; i++) msg += args[i];
+            for (int i = 0; i < args.Length; i++) msg += args[i] + " ";
             api.SendMessage(player, GlobalConstants.GeneralChatGroup, player.PlayerName + " " + msg, EnumChatType.OthersMessage);
         }
         public void TellCommand(IServerPlayer sender, int groupId, CmdArgs args)
